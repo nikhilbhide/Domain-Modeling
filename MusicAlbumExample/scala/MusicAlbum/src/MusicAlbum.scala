@@ -29,11 +29,35 @@ def main(args:Array[String]) {
 	println(artistNames)	
 	
 	//using filters inside for
+	//get authors from volumes, volumes from album and authors, which belong to country = 'India'	
 	artistNames = for {
 		volume <- album.volumes
 		author <- volume.authors if author.country=="India"
 	}yield author.name
 	println(artistNames)	
+
+//using filters inside for
+//get songs from track, tracks from author, authors from volume and volume from album
+//get records if author belongs to India 
+var songs = for {
+		volume <- album.volumes
+		author <- volume.authors if author.country=="India"
+		track  <- author.tracks
+		song <-track.songs
+	}yield song.name
+	println(songs)
+	
+//using filters inside for
+//get songs from track, tracks from author, authors from volume and volume from album
+//get records if authord belongs to USA and song length > 100
+songs = for {
+		volume <- album.volumes
+		author <- volume.authors if author.country=="USA"
+		track  <- author.tracks
+		song <-track.songs if song.length < 100
+	}yield song.name
+	println(songs)	
+	
 	
 	
 }
@@ -42,18 +66,18 @@ def getAlbum():Album = {
 		val songsList1 = Seq (Song("Test1",10),Song("Test2",10))
 				val songsList2 = Seq (Song("Test3",10),Song("Test4",10))
 				val songsList3 = Seq (Song("Test5",10),Song("Test6",10))
-				val songsList4 = Seq (Song("Test7",10),Song("Test8",10))
+				val songsList4 = Seq (Song("Test7",60),Song("Test8",102))
 				val songsList5 = Seq (Song("Test9",10),Song("Test10",10))
 				val songsList6 = Seq (Song("Test11",10),Song("Test12",10))
-				val songsList7 = Seq (Song("Test13",10),Song("Test14",10))
-				val songsList8 = Seq (Song("Test15",10),Song("Test16",10))
-				val songsList9 = Seq (Song("Test17",20),Song("Test18",10))
+				val songsList7 = Seq (Song("Test13",10),Song("Test14",4110))
+				val songsList8 = Seq (Song("Test15",90),Song("Test16",10))
+				val songsList9 = Seq (Song("Test17",1000),Song("Test18",10))
 				val songsList10 = Seq (Song("Test19",20),Song("Test20",20))
 				val songsList11 = Seq (Song("Test21",20),Song("Test22",20))
-				val songsList12 = Seq (Song("Test23",20),Song("Test24",20))
-				val songsList13 = Seq (Song("Test25",20),Song("Test26",20))
+				val songsList12 = Seq (Song("Test23",20),Song("Test24",1220))
+				val songsList13 = Seq (Song("Test25",1220),Song("Test26",20))
 				val songsList14 = Seq (Song("Test27",20),Song("Test28",20))
-				val songsList15 = Seq (Song("Test29",20),Song("Test30",20))
+				val songsList15 = Seq (Song("Test29",2590),Song("Test30",20))
 				val songsList16 = Seq (Song("Test31",20),Song("Test32",20))
 				val trackList1= Seq(Track(songsList1,"Track1"),Track(songsList2,"Track2"))
 				val trackList2= Seq(Track(songsList3,"Track3"),Track(songsList4,"Track4"))
@@ -63,7 +87,7 @@ def getAlbum():Album = {
 				val trackList6= Seq(Track(songsList11,"Track11"),Track(songsList12,"Track2"))
 				val trackList7= Seq(Track(songsList13,"Track3"),Track(songsList14,"Track4"))
 				val trackList8= Seq(Track(songsList15,"Track5"),Track(songsList16,"Track6"))
-				val authorList1=Seq(Author(trackList1,"Author1","India"),Author(trackList2,"Author2","Israel"))
+				val authorList1=Seq(Author(trackList1,"Author1","USA"),Author(trackList2,"Author2","Israel"))
 				val authorList2=Seq(Author(trackList3,"Author3","USA"),Author(trackList4,"Author4","India"))
 				val authorList3=Seq(Author(trackList5,"Author5","Israel"),Author(trackList2,"Author6","Thailand"))
 				val authorList4=Seq(Author(trackList7,"Author7","India"),Author(trackList2,"Author8","Indonesia"))
