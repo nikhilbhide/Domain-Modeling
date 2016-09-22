@@ -3,8 +3,8 @@ package com.org.music;
 import java.util.List;
 
 public class Volume {
-	public Volume(List<Author> authors) {
-		this.authors = authors;
+	public Volume(List<Artist> artists) {
+		this.artists = artists;
 	}
 	private String name;
 	/**
@@ -19,17 +19,17 @@ public class Volume {
 	public void setName(String name) {
 		this.name = name;
 	}
-	private List<Author> authors;
+	private List<Artist> artists;
 	/**
 	 * @return the author
 	 */
-	public List<Author> getAuthors() {
-		return authors;
+	public List<Artist> getArtists() {
+		return artists;
 	}
 	/**
 	 * @param author the author to set
 	 */
-	public void setAuthor(List<Author> authors) {
-		this.authors = authors;
+	public void setArtist(List<Artist> artists) {
+		this.artists = artists;
 	}
 }

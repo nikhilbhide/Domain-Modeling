@@ -7,10 +7,9 @@ import java.util.stream.Collectors;
 public class MusicPlayer {
 	public static void main(String [] args) {
 		Album album = createMusicAlbum();
-
 		List<String> listOfSongsExample1 = album.getVolume()
 				.stream()
-				.map(al->al.getAuthors())				     
+				.map(al->al.getArtists())				     
 				.flatMap(au->au.stream())
 				.map(au->au.getTracks())
 				.flatMap(t->t.stream())
@@ -44,13 +43,13 @@ public class MusicPlayer {
 		List<Track> trackList4 = getItemList(new Track(songList7), new Track(songList8));
 		List<Track> trackList5 = getItemList(new Track(songList9), new Track(songList10));
 		List<Track> trackList6 = getItemList(new Track(songList11), new Track(songList12));
-		List<Track> trackList7 = getItemList(new Track(songList13), new Track(songList13));
+		List<Track> trackList7 = getItemList(new Track(songList13), new Track(songList14));
 		List<Track> trackList8 = getItemList(new Track(songList15), new Track(songList16));
-		List<Author> authorList1 = getItemList(new Author(trackList1), new Author(trackList2));
-		List<Author> authorList2 = getItemList(new Author(trackList3), new Author(trackList4));
-		List<Author> authorList3 = getItemList(new Author(trackList5), new Author(trackList6));
-		List<Author> authorList4 = getItemList(new Author(trackList7), new Author(trackList8));
-		Album album =  new Album(getItemList(new Volume(authorList1), new Volume(authorList2),new Volume(authorList3), new Volume(authorList4)));
+		List<Artist> ArtistList1 = getItemList(new Artist(trackList1), new Artist(trackList2));
+		List<Artist> ArtistList2 = getItemList(new Artist(trackList3), new Artist(trackList4));
+		List<Artist> ArtistList3 = getItemList(new Artist(trackList5), new Artist(trackList6));
+		List<Artist> ArtistList4 = getItemList(new Artist(trackList7), new Artist(trackList8));
+		Album album =  new Album(getItemList(new Volume(ArtistList1), new Volume(ArtistList2),new Volume(ArtistList3), new Volume(ArtistList4)));
 		return album;
 	}
 

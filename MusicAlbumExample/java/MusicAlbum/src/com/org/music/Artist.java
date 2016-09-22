@@ -2,8 +2,8 @@ package com.org.music;
 
 import java.util.List;
 
-public class Author {
-	public Author(List<Track> tracks) {
+public class Artist {
+	public Artist(List<Track> tracks) {
 		this.tracks = tracks;
 		this.name = name;
 	}
